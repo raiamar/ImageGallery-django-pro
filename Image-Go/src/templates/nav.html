@@ -1,0 +1,106 @@
+<!--C:\Users\Dell\django-project\Image-Go-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Image Archive</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{%url 'main:home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'main:rawImage'%}">Raw Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/main/home#Free" >Free Image</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/main/home#Paid">Paid Image</a>
+      </li>
+    </ul>
+
+
+<form class="form-inline my-2 my-lg-0" style="margin-right: 18%" method="POST" action="{% url 'main:search_image'%}">
+  {%csrf_token%}
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 350px" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+
+    <div class="dropdown" style="margin-right: 40px">
+        {% if request.user.is_active %}
+         <a href="{%url 'main:loginHome'%}"> <i id="log_links" class="fa fa-user-circle fa-lg" aria-hidden="true" style="color: green"></i></a><a  href="#" onclick="myFunction()" class="dropbtn">{{request.user}}</a>
+         <div id="myDropdown" class="dropdown-content">
+                <a id="log_links" class="nav-link" href="{% url 'user:logout' %}">LogOut</a>
+                <a id="log_links" class="nav-link" href="{%url 'main:loginHome'%}">Home</a>
+                <a class="nav-link" href="{%url 'main:new_image_added'%}">Add Image</a>
+             </div>
+           </div>
+        {%else%}
+      <div style="margin-right: 5px; padding: 2px" id="log_reg">
+        <a href="{% url 'user:user_login_view' %}">Login</a>
+        <a href="{% url 'user:register_new_user' %}">SignUp</a>
+      </div>
+        {%endif%}
+    </div>
+    
+  </div>
+</nav>
+
+
+<style>
+#log_links{display: inline-block;}
+#log_reg a{text-decoration: none;}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+.dropdown a{
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.myDropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>

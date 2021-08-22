@@ -1,0 +1,36 @@
+{% extends 'frame.html' %}
+{% block content %}
+
+<div style="margin-left: 10px">
+{% for img  in imageData%}
+<div class="row" style="display: inline-block; margin-left: 15px; margin-top: 15px;">
+<div class="col-sm-6 lg-5 md-5" style="display: flex; flex-direction: column;">
+<div class="lightbox">
+<div class="card" style="width: 25rem;" id="lightbox">
+        <img src=" {{img.imageUpload.url}}" class="image" style="height: 30rem;">
+
+      <div class="overlay"> 
+        <p style="color: #DAA520; font-family: Apple Chancery, cursive">"{{img.imageTitle}}"</p>
+            {{img.description}}
+
+      </div></div>
+      <a href="{% url 'main:edit_image' img.id %}" class="btn btn-primary"><i class="fa fa-clipboard" style="color: black"></i></a>
+      <a href="{% url 'main:delete_image' img.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+</div></div>
+</div>
+{%endfor%}
+</div><br>
+
+{% endblock %}
+
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+  $(window).on('load', function(){
+    $('#MyModal').modal('show');
+  });
+
+</script>

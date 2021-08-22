@@ -1,0 +1,17 @@
+{% extends 'frame.html' %}
+
+{% block content %}
+<div class="form-group" id="imageUploadForm" style="border: 1px solid gray; border-radius: 6px; margin: 2% 0% 0% 30%; padding: 25px">
+<form method="POSt" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" name="submit" class="btn btn-success" style="float: right; margin: 0;">
+</form>
+</div>
+{% endblock %}
+
+<style>
+	#imageUploadForm{
+	width: 35%;
+}
+</style>

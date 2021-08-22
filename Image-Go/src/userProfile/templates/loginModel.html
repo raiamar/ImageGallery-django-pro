@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Papa-Razzi Gallery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style=" width: 20%; margin: 10% 0% 0% 40%; padding: 10px">
+<form accept="" method="POST" id="loginForm">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="submit" class="btn btn-success" style="width: 73%">
+  
+</form>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  form input{width: 100%}
+  #loginForm p{color: red}
+</style>
