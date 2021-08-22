@@ -19,7 +19,10 @@ Image Archive is django based web application where user can add new images, sea
 ![](src/static/imageView/mainView.png) ![](src/static/imageView/loginRegister.JPG)
 
 ## Other Option in Main page
-![](src/static/imageView/search-list.png) ![](src/static/imageView/lidt-by-user.png)
+![](src/static/imageView/search-list.png) 
+
+## Click into particular user images
+![](src/static/imageView/lidt-by-user.png)
 
 ## Logged in users
 ![](src/static/imageView/loginUser1.png)
